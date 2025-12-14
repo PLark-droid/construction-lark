@@ -8,6 +8,9 @@
 // API
 export { LarkClient, FIELD_TYPES, type LarkConfig, type LarkApiResponse, type BaseRecord } from './api';
 
+// Auth
+export { LarkAuth, type LarkAuthConfig, type LarkCredentials } from './auth';
+
 // Types
 export * from './types';
 
