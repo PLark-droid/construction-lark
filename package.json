@@ -20,6 +20,9 @@
   ],
   "scripts": {
     "dev": "tsx src/index.ts",
+    "start": "node dist/cli/index.js",
+    "setup": "tsx scripts/construction-standard-setup.ts",
+    "setup:full": "tsx scripts/construction-standard-setup.ts --with-sample-data",
     "example": "tsx examples/basic-usage.ts",
     "example:auth": "tsx examples/auth-example.ts",
     "dashboard:create": "tsx src/scripts/create-dashboards.ts",

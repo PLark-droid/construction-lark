@@ -10,6 +10,7 @@ import chalk from 'chalk';
 import { initCommand } from './commands/init.js';
 import { setupCommand } from './commands/setup.js';
 import { demoCommand } from './commands/demo.js';
+import { sampleDataCommand } from './commands/sample-data.js';
 
 const program = new Command();
 
@@ -64,6 +65,21 @@ program
     }
   });
 
+// Sample Data コマンド
+program
+  .command('sample-data')
+  .description('サンプルデータを投入（対話形式）')
+  .option('-m, --minimal', '最小限のサンプルデータのみ投入')
+  .action(async (options) => {
+    try {
+      await sampleDataCommand(options);
+    } catch (error) {
+      console.error(chalk.red('\n❌ エラーが発生しました'));
+      console.error(chalk.red((error as Error).message));
+      process.exit(1);
+    }
+  });
+
 // ヘルプコマンドのカスタマイズ
 program.on('--help', () => {
   console.log('');
@@ -71,8 +87,7 @@ program.on('--help', () => {
   console.log('');
   console.log(chalk.white('  初期セットアップ:'));
   console.log(chalk.gray('    $ npx construction-lark init'));
-  console.log(chalk.gray('    $ npx construction-lark setup'));
-  console.log(chalk.gray('    $ npx construction-lark demo'));
+  console.log(chalk.gray('    $ npx construction-lark sample-data'))
   console.log('');
   console.log(chalk.white('  再セットアップ:'));
   console.log(chalk.gray('    $ npx construction-lark setup --force'));

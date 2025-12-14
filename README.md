@@ -17,11 +17,33 @@
 
 ## クイックスタート
 
-### 1. Baseを開く
+### CLI ワンクリック初期化（推奨）
+
+最も簡単な方法です。対話形式で必要な情報を入力するだけで、完全なセットアップが完了します。
+
+```bash
+# ワンクリック初期化
+npx construction-lark init
+
+# 実行内容:
+# ✓ Lark認証の検証
+# ✓ テーブル自動作成（6テーブル）
+# ✓ リレーション設定（14件）
+# ✓ ビュー作成（3種類）
+# ✓ .env ファイル生成
+
+# サンプルデータ投入（オプション）
+npx construction-lark sample-data
+```
+
+セットアップ完了後、以下のURLからBaseにアクセスできます:
+- Lark Baseを開く → 作成したBaseを選択
+
+### 既存Baseを使う場合
 
 **本番環境のBase**: https://sjpfkixxkhe8.jp.larksuite.com/base/PI7gbMT0FaQHXis3qmqjF1C4pyd
 
-### 2. 毎日やること
+### 毎日やること
 
 **朝（3分）**: KY活動記録を入力
 ```
@@ -159,6 +181,64 @@ npx tsx scripts/complete-relations-setup.ts
 詳細設計と実行結果:
 - [完全版リレーション設計書](/docs/COMPLETE-RELATIONS-DESIGN.md)
 - [実行結果レポート](/docs/RELATIONS-SETUP-RESULT.md)
+
+---
+
+## CLIコマンド
+
+### init - ワンクリック初期化
+
+対話形式で完全なセットアップを実行します。
+
+```bash
+npx construction-lark init
+```
+
+**実行内容:**
+1. Lark認証情報の入力・検証
+2. Base接続確認
+3. テーブル自動作成（6テーブル）
+   - 工事台帳
+   - 工程表
+   - 作業員マスタ
+   - 協力会社マスタ
+   - 資機材マスタ
+   - 日報
+4. リレーション設定（14件の双方向リレーション）
+5. ビュー作成（ガントチャート、カンバン、カレンダー）
+6. .env ファイル生成
+
+**オプション:**
+- `--skip-env` - .envファイルの作成をスキップ
+
+### sample-data - サンプルデータ投入
+
+テスト用のサンプルデータを投入します。
+
+```bash
+npx construction-lark sample-data
+```
+
+**データセット:**
+- 最小限（各テーブル3-5件）
+- 標準（各テーブル10-20件）
+- 大規模（各テーブル50-100件）
+
+**オプション:**
+- `-m, --minimal` - 最小限のサンプルデータのみ投入
+
+### その他のコマンド
+
+```bash
+# ヘルプ表示
+npx construction-lark --help
+
+# バージョン確認
+npx construction-lark --version
+
+# 既存のテーブルを再作成
+npx construction-lark setup --force
+```
 
 ---
 
