@@ -17,6 +17,7 @@
   ],
   "scripts": {
     "dev": "tsx src/index.ts",
+    "example": "tsx examples/basic-usage.ts",
     "build": "tsc",
     "test": "vitest",
     "test:run": "vitest run",
