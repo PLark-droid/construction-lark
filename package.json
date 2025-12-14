@@ -1,21 +1,52 @@
 {
   "name": "construction-lark",
   "version": "0.1.0",
-  "description": "Autonomous development powered by Agentic OS",
+  "description": "建設業向けLark Base連携 - 工事管理・工程管理・ガントチャート",
   "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "scripts": {
     "dev": "tsx src/index.ts",
     "build": "tsc",
     "test": "vitest",
+    "test:run": "vitest run",
     "lint": "eslint . --ext .ts,.tsx",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run build"
   },
   "keywords": [
-    "agentic-os",
-    "autonomous"
+    "lark",
+    "base",
+    "construction",
+    "gantt",
+    "project-management",
+    "建設業",
+    "工事管理",
+    "工程管理"
   ],
-  "author": "",
+  "author": "PLark-droid",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PLark-droid/construction-lark.git"
+  },
+  "bugs": {
+    "url": "https://github.com/PLark-droid/construction-lark/issues"
+  },
+  "homepage": "https://github.com/PLark-droid/construction-lark#readme",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "dependencies": {},
   "devDependencies": {
     "@types/node": "^20.10.0",
