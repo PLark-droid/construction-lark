@@ -1,0 +1,81 @@
+{
+  "name": "construction-lark",
+  "version": "0.1.0",
+  "description": "建設業向けLark Base連携 - 工事管理・工程管理・ガントチャート",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "construction-lark": "./dist/cli/index.js"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "dev": "tsx src/index.ts",
+    "example": "tsx examples/basic-usage.ts",
+    "example:auth": "tsx examples/auth-example.ts",
+    "dashboard:create": "tsx src/scripts/create-dashboards.ts",
+    "dashboard:create-progress": "tsx examples/create-construction-progress-dashboard.ts",
+    "dashboard:create-equipment": "tsx examples/create-equipment-dashboard.ts",
+    "dashboard:create-personnel": "tsx examples/create-personnel-dashboard.ts",
+    "dashboard:create-safety": "tsx examples/create-safety-dashboard.ts",
+    "view:create": "tsx scripts/interactive-create-views.ts",
+    "view:create-manual": "tsx scripts/create-views.ts",
+    "build": "tsc",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:auth": "vitest run src/auth/__tests__/lark-auth.test.ts",
+    "lint": "eslint . --ext .ts,.tsx",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "lark",
+    "base",
+    "construction",
+    "gantt",
+    "project-management",
+    "建設業",
+    "工事管理",
+    "工程管理"
+  ],
+  "author": "PLark-droid",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PLark-droid/construction-lark.git"
+  },
+  "bugs": {
+    "url": "https://github.com/PLark-droid/construction-lark/issues"
+  },
+  "homepage": "https://github.com/PLark-droid/construction-lark#readme",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@types/inquirer": "^9.0.9",
+    "chalk": "^5.6.2",
+    "commander": "^14.0.2",
+    "dotenv": "^17.2.3",
+    "inquirer": "^13.1.0",
+    "open": "^11.0.0",
+    "ora": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@typescript-eslint/eslint-plugin": "^6.13.0",
+    "@typescript-eslint/parser": "^6.13.0",
+    "eslint": "^8.54.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.4"
+  }
+}
