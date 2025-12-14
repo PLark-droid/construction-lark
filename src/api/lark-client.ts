@@ -284,6 +284,61 @@ export class LarkClient {
 
     return response.json() as Promise<LarkApiResponse<{ table_id: string }>>;
   }
+
+  /**
+   * ビューを作成
+   */
+  async createView(
+    appToken: string,
+    tableId: string,
+    viewName: string,
+    viewType?: 'grid' | 'kanban' | 'gallery' | 'gantt' | 'form'
+  ): Promise<LarkApiResponse<{ view_id: string }>> {
+    const token = await this.getAccessToken();
+
+    const body: Record<string, unknown> = {
+      view_name: viewName,
+    };
+
+    if (viewType) {
+      body.view_type = viewType;
+    }
+
+    const response = await fetch(
+      `${this.config.baseUrl}/bitable/v1/apps/${appToken}/tables/${tableId}/views`,
+      {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(body),
+      }
+    );
+
+    return response.json() as Promise<LarkApiResponse<{ view_id: string }>>;
+  }
+
+  /**
+   * ビュー一覧を取得
+   */
+  async listViews(
+    appToken: string,
+    tableId: string
+  ): Promise<LarkApiResponse<{ items: Array<{ view_id: string; view_name: string; view_type: string }> }>> {
+    const token = await this.getAccessToken();
+
+    const response = await fetch(
+      `${this.config.baseUrl}/bitable/v1/apps/${appToken}/tables/${tableId}/views`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    return response.json() as Promise<LarkApiResponse<{ items: Array<{ view_id: string; view_name: string; view_type: string }> }>>;
+  }
 }
 
 // フィールドタイプの定数
@@ -304,4 +359,13 @@ export const FIELD_TYPES = {
   UPDATED_TIME: 1002,// 更新日時
   CREATED_BY: 1003,  // 作成者
   UPDATED_BY: 1004,  // 更新者
+} as const;
+
+// ビュータイプの定数
+export const VIEW_TYPES = {
+  GRID: 'grid',           // グリッドビュー（表形式）
+  KANBAN: 'kanban',       // カンバンビュー
+  GALLERY: 'gallery',     // ギャラリービュー
+  GANTT: 'gantt',         // ガントビュー
+  FORM: 'form',           // フォームビュー
 } as const;

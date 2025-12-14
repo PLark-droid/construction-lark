@@ -18,6 +18,24 @@ export * from './types';
 export { ConstructionService, type ConstructionServiceConfig } from './services';
 export { GanttService, type GanttServiceConfig } from './services';
 
+// Setup
+export {
+  BaseCreator,
+  TableCreator,
+  SampleData,
+  setupConstructionBase,
+  generateEnvConfig,
+  verifySetup,
+  type BaseCreatorConfig,
+  type BaseCreationResult,
+  type TableCreationResult,
+  type FieldDefinition,
+  type SampleDataResult,
+  type TableIdMapping,
+  type SetupResult,
+  type SetupOptions,
+} from './setup';
+
 // ========================================
 // 使用例
 // ========================================
