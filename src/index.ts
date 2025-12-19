@@ -17,6 +17,16 @@ export * from './types';
 // Services
 export { ConstructionService, type ConstructionServiceConfig } from './services';
 export { GanttService, type GanttServiceConfig } from './services';
+export {
+  ScheduleService,
+  type ScheduleServiceConfig,
+  type ScheduleCreateInput,
+  type ScheduleUpdateInput,
+  type ProgressUpdateInput,
+  type AlertConfig,
+  type ScheduleAlert,
+} from './services';
+export { ReportService, type ReportConfig } from './services';
 
 // Setup
 export {
