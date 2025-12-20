@@ -11,3 +11,4 @@ export {
   createPersonnelAllocationDashboard,
   createSafetyManagementDashboard,
 } from './dashboard-templates';
+export { SimpleBaseService, type SimpleBaseConfig } from './simple-base-service';
