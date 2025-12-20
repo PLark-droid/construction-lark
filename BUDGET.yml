@@ -1,0 +1,38 @@
+# BUDGET.yml - Economic Governance Protocol Configuration
+# AGENTS.md v5.0 準拠
+
+# 月次予算設定 (USD)
+monthly_budget_usd: 100
+
+# しきい値設定
+thresholds:
+  # 警告しきい値 (80% = 0.8)
+  warning: 0.8
+  # 緊急しきい値 (150% = 1.5)
+  emergency: 1.5
+
+# 緊急時アクション設定
+emergency_actions:
+  # 緊急時に無効化するワークフロー
+  disable_workflows:
+    - autonomous-agent.yml
+
+# サービス別予算配分
+budget_allocation:
+  anthropic_api: 80      # Anthropic API: $80/月
+  firebase: 10           # Firebase: $10/月
+  other: 10              # その他: $10/月
+
+# アラート設定
+alerts:
+  # 通知先
+  notify:
+    - owner
+  # Slack通知 (オプション)
+  slack_webhook: ""
+
+# メモ
+notes: |
+  construction-lark プロジェクト用予算設定
+  - 小規模プロジェクトのため月$100で運用
+  - Anthropic APIがメイン利用
